@@ -1,0 +1,11 @@
+.social-link {
+    position: relative;
+    background: linear-gradient(90deg,
+            rgba(179, 203, 60, 0.35),
+            rgba(179, 203, 60, 0.9) 33.62%,
+            rgba(179, 203, 60, 0.9) 72.34%,
+            rgba(179, 203, 60, 0.35));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}

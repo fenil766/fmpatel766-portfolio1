@@ -1,6 +1,7 @@
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import "./Footer.css";
 
 export default function Footer() {
   const ref = useRef(null);
@@ -19,7 +20,6 @@ export default function Footer() {
   const socialLinksTop = socialLinks.slice(0, 3);
   const socialLinksMiddle = socialLinks.slice(3);
 
-  // Animation variants matching navbar style
   const footerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -34,7 +34,7 @@ export default function Footer() {
 
   const socialVariants: Variants = {
     hidden: { opacity: 0, y: -15 },
-    visible: (i) => ({
+    visible: (i: number) => ({
       opacity: 1,
       y: 0,
       transition: {
@@ -61,36 +61,20 @@ export default function Footer() {
   return (
     <motion.footer
       ref={ref}
-      className="bg-zinc-900/95 relative overflow-hidden pt-16! pb-8! lg:pt-14! lg:pb-12! mt-10!"
+      className="bg-zinc-900/95 relative overflow-hidden pt-16 pb-8 lg:pt-14 lg:pb-12 mt-10"
       variants={footerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      <style jsx>{`
-        .social-link {
-          position: relative;
-          background: linear-gradient(
-            90deg,
-            rgba(179, 203, 60, 0.35),
-            rgba(179, 203, 60, 0.9) 33.62%,
-            rgba(179, 203, 60, 0.9) 72.34%,
-            rgba(179, 203, 60, 0.35)
-          );
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-      `}</style>
-
-      <div className="max-w-full mx-auto px-4! sm:px-6! lg:px-8!">
-        {/* Social Links - Top Row */}
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col justify-center items-center gap-10">
-          <div className="w-full flex justify-evenly items-center gap-12 px-10!">
+          <div className="w-full flex justify-evenly items-center gap-12 px-10">
             {socialLinksTop.map((link, index) => (
               <motion.a
                 key={index}
                 href={link.href}
-                 target="_blank"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="social-link text-lg sm:text-sm lg:text-xl font-bold relative group"
                 custom={index}
                 variants={socialVariants}
@@ -102,12 +86,13 @@ export default function Footer() {
             ))}
           </div>
 
-          {/* Social Links - Middle Row (Staggered) */}
           <div className="w-full flex justify-evenly items-center gap-12">
             {socialLinksMiddle.slice(0, 4).map((link, index) => (
               <motion.a
                 key={index}
                 href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="social-link text-lg sm:text-sm lg:text-xl font-bold relative group"
                 custom={3 + index}
                 variants={socialVariants}
@@ -120,11 +105,10 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Main Title - PATEL Left and FENIL Full Width */}
         <div className="mb-16 md:mb-20 relative">
-          <div className="flex flex-col justify-start w-full p-10!">
+          <div className="flex flex-col justify-start w-full p-10">
             <motion.h2
-              className="text-3xl sm:text-4xl md:text-8xl font-black text-white/40 leading-none whitespace-nowrap font-(family-name:--font-primary)"
+              className="text-3xl sm:text-4xl md:text-8xl font-black text-white/40 leading-none whitespace-nowrap"
               variants={titleVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
@@ -132,7 +116,7 @@ export default function Footer() {
               PATEL
             </motion.h2>
             <motion.h1
-              className="text-5xl md:text-[300px] font-black text-white leading-tight flex-1 font-(family-name:--font-primary)"
+              className="text-5xl md:text-[300px] font-black text-white leading-tight flex-1"
               variants={titleVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
@@ -142,15 +126,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Info - Separated Left and Right */}
-        <div className="border-t border-zinc-700 pt-6! md:pt-8! flex flex-row justify-between items-center">
+        <div className="border-t border-zinc-700 pt-6 md:pt-8 flex flex-row justify-between items-center">
           <motion.p
             className="text-xs sm:text-sm lg:text-base text-white/70 font-bold tracking-widest"
             variants={titleVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            © <span className="text-[#B3CB3C]" >PORTFOLIO.</span>ALL RIGHTS RESERVED
+            © <span className="text-[#B3CB3C]">PORTFOLIO.</span> ALL RIGHTS RESERVED
           </motion.p>
           <motion.p
             className="text-xs sm:text-sm lg:text-base text-white/70 font-bold tracking-widest"
@@ -158,7 +141,8 @@ export default function Footer() {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
           >
-            DESIGN AND DEVELOPED BY <span className="text-[#B3CB3C]">FENIL PATEL</span> 
+            DESIGN AND DEVELOPED BY{" "}
+            <span className="text-[#B3CB3C]">FENIL PATEL</span>
           </motion.p>
         </div>
       </div>
