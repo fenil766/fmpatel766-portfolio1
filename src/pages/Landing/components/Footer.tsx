@@ -61,14 +61,14 @@ export default function Footer() {
   return (
     <motion.footer
       ref={ref}
-      className="bg-zinc-900/95 relative overflow-hidden pt-16 pb-8 lg:pt-14 lg:pb-12 mt-10"
+      className="bg-zinc-900/95 relative overflow-hidden pt-24 pb-12 lg:pt-32 lg:pb-16"
       variants={footerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col justify-center items-center gap-10">
-          <div className="w-full flex justify-evenly items-center gap-12 px-10">
+        <div className="social-links-container flex flex-col justify-center items-center gap-12 border-b border-zinc-800/50">
+          <div className="w-full flex justify-evenly items-center gap-12 px-4 md:px-10">
             {socialLinksTop.map((link, index) => (
               <motion.a
                 key={index}
@@ -106,7 +106,7 @@ export default function Footer() {
         </div>
 
         <div className="mb-16 md:mb-20 relative">
-          <div className="flex flex-col justify-start w-full p-10">
+          <div className="flex flex-col justify-start w-full py-10 md:py-20">
             <motion.h2
               className="text-3xl sm:text-4xl md:text-8xl font-black text-white/40 leading-none whitespace-nowrap"
               variants={titleVariants}
@@ -126,7 +126,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-zinc-700 pt-6 md:pt-8 flex flex-row justify-between items-center">
+        <div className="copyright-section border-t border-zinc-700 flex flex-col md:flex-row justify-between items-center gap-6">
           <motion.p
             className="text-xs sm:text-sm lg:text-base text-white/70 font-bold tracking-widest"
             variants={titleVariants}
