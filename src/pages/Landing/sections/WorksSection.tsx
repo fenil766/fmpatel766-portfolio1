@@ -4,6 +4,10 @@ import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import workCardTemplate from "../../../assets/images/work-card-temp.jpg";
+import spark from "../../../assets/images/sparkThumbnil.jpeg";
+import freshNest from "../../../assets/images/fresNestThumbnil.jpeg";
+import laundry from "../../../assets/images/laundryThumbnil.jpeg";
+import hotel from "../../../assets/images/hotelThumbnil.jpeg";
 
 export default function WorksSection() {
   const ref = useRef(null);
@@ -15,49 +19,55 @@ export default function WorksSection() {
   const works = [
     {
       id: 1,
-      title: "GatherGo Management 1",
+      title: "Spark Event Management",
       description:
-        "Designed user interface for GatherGo's event management company website with intuitive navigation, elegant visuals, and seamless experience.",
-      image: workCardTemplate,
+        "Designed a sophisticated event management website for Spark, combining intuitive navigation, refined visuals, and a seamless digital experience.",
+      image: spark,
+      link: "https://www.figma.com/proto/9SJR5cQJskLVf5U1C0BhGA/Portfoio-Showcase?node-id=1-133&t=VqdS9mOVKXAHkhLY-1",
       isShowMore: false,
     },
     {
       id: 2,
-      title: "GatherGo Management 2",
+      title: "Fresh Nest",
       description:
-        "Designed user interface for GatherGo's event management company website with intuitive navigation, elegant visuals, and seamless experience.",
-      image: workCardTemplate,
+        "Designed a clean and user-friendly website for Fresh Nest cleaning services, ensuring intuitive navigation and a seamless browsing experience",
+      image: freshNest,
+      link: "https://www.figma.com/proto/9SJR5cQJskLVf5U1C0BhGA/Portfolio-Showcase?node-id=1-1234&t=VqdS9mOVKXAHkhLY-1",
       isShowMore: false,
     },
     {
       id: 3,
-      title: "GatherGo Management 3",
+      title: "Laundry App",
       description:
         "Designed user interface for GatherGo's event management company website with intuitive navigation, elegant visuals, and seamless experience.",
-      image: workCardTemplate,
+      image: laundry,
+      link: "https://www.figma.com/board/9W20EnjrgUhcBEY3QMiF0R/Laundry-App?node-id=0-1&t=UbqtGGbRcqwJyEoO-1",
       isShowMore: false,
     },
     {
       id: 4,
-      title: "GatherGo Management 4",
+      title: "Hotel Management",
       description:
         "Designed user interface for GatherGo's event management company website with intuitive navigation, elegant visuals, and seamless experience.",
-      image: workCardTemplate,
+      image: hotel,
+      link: "https://www.figma.com/proto/9SJR5cQJskLVf5U1C0BhGA/Portfolio-Showcase?node-id=34-842&p=f&viewport=423%2C40%2C0.15&t=BTWoKKx0JLXwbD9B-1&scaling=min-zoom&content-scaling=fixed&page-id=34%3A841",
       isShowMore: false,
     },
+    // {
+    //   id: 5,
+    //   title: "GatherGo Management 5",
+    //   description:
+    //     "Designed user interface for GatherGo's event management company website with intuitive navigation, elegant visuals, and seamless experience.",
+    //   image: workCardTemplate,
+    //   link: "https://www.behance.net/portfolio/editor/project/181530663",
+    //   isShowMore: false,
+    // },
     {
       id: 5,
-      title: "GatherGo Management 5",
-      description:
-        "Designed user interface for GatherGo's event management company website with intuitive navigation, elegant visuals, and seamless experience.",
-      image: workCardTemplate,
-      isShowMore: false,
-    },
-    {
-      id: 6,
       title: "Show More",
       description: "Explore all of my works and projects",
       image: null,
+      link: "https://www.behance.net/patelfenil11",
       isShowMore: true,
     },
   ];
@@ -77,8 +87,18 @@ export default function WorksSection() {
     }
   };
 
-  const handleShowMore = () => {
-    navigate("#works");
+  const handleWorkClick = (link: string | undefined) => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleShowMore = (link: string | undefined) => {
+    if (link) {
+      window.open(link, "_blank", "noopener,noreferrer");
+    } else {
+      navigate("#works");
+    }
   };
 
   // Get 3 cards to display based on current index
@@ -126,14 +146,13 @@ export default function WorksSection() {
                 {work.isShowMore ? (
                   // Show More Card
                   <motion.div
-                    className="relative h-full rounded-2xl overflow-hidden cursor-pointer border border-transparent"
-                    whileHover={{ 
+                    className="relative h-full rounded-2xl overflow-hidden border border-transparent"
+                    whileHover={{
                       scale: 1.02,
                       borderColor: "#B3CB3C",
                       boxShadow: "0 0 30px rgba(179, 203, 60, 0.5)"
                     }}
                     transition={{ duration: 0.2, ease: "easeInOut" }}
-                    onClick={handleShowMore}
                   >
                     <div className="absolute inset-0 bg-linear-to-br from-[#B3CB3C]/20 to-[#B3CB3C]/5 backdrop-blur-md" />
 
@@ -142,16 +161,26 @@ export default function WorksSection() {
                       <h3 className="text-2xl md:text-3xl font-black text-white mb-3">
                         {work.title}
                       </h3>
-                      <p className="text-gray-300 text-sm md:text-base">
+                      <p className="text-gray-300 text-sm md:text-base mb-6!">
                         {work.description}
                       </p>
+                      <motion.button
+                        className="text-[#B3CB3C] font-(family-name:--font-primary) text-sm hover:text-[#F25912] transition duration-300 cursor-pointer"
+                        whileHover={{ x: 4 }}
+                        transition={{ duration: 0.2 }}
+                        onClick={() => {
+                          handleShowMore(work.link);
+                        }}
+                      >
+                        <span className="font-(family-name:--font-primary)">Read More →</span>
+                      </motion.button>
                     </div>
                   </motion.div>
                 ) : (
                   // Regular Work Card
                   <motion.div
-                    className="relative h-full rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md cursor-pointer border border-transparent"
-                    whileHover={{ 
+                    className="relative h-full rounded-2xl overflow-hidden bg-white/5 backdrop-blur-md border border-transparent"
+                    whileHover={{
                       scale: 1.02,
                       borderColor: "#B3CB3C",
                       boxShadow: "0 0 30px rgba(179, 203, 60, 0.5)"
@@ -177,11 +206,14 @@ export default function WorksSection() {
                         {work.description}
                       </p>
                       <motion.button
-                        className="text-[#B3CB3C]  font-(family-name:--font-primary) text-sm hover:text-[#F25912] transition duration-300"
+                        className="text-[#B3CB3C]  font-(family-name:--font-primary) text-sm hover:text-[#F25912] transition duration-300 cursor-pointer"
                         whileHover={{ x: 4 }}
                         transition={{ duration: 0.2 }}
+                        onClick={() => {
+                          handleWorkClick(work.link);
+                        }}
                       >
-                      <span className="font-(family-name:--font-primary)">Read More →</span>  
+                        <span className="font-(family-name:--font-primary)">Read More →</span>
                       </motion.button>
                     </div>
                   </motion.div>
@@ -196,8 +228,8 @@ export default function WorksSection() {
               {/* {showLeftButton && ( */}
               <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ 
-                  opacity: 1, 
+                animate={{
+                  opacity: 1,
                   scale: 1,
                   boxShadow: [
                     "0 0 0px rgba(179, 203, 60, 0)",
@@ -206,13 +238,13 @@ export default function WorksSection() {
                   ]
                 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ 
+                transition={{
                   opacity: { duration: 0.2 },
                   scale: { duration: 0.2 },
-                  boxShadow: { 
-                    duration: 2, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
+                  boxShadow: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }
                 }}
                 whileHover={
@@ -224,11 +256,10 @@ export default function WorksSection() {
                 onClick={showLeftButton ? handlePrev : undefined}
                 tabIndex={showLeftButton ? 0 : -1}
                 aria-disabled={!showLeftButton}
-                className={`p-3! rounded-full text-white transition duration-300 backdrop-blur-md ${
-                  showLeftButton
-                    ? "visible pointer-events-auto hover:bg-[#B3CB3C] hover:text-black"
-                    : "invisible pointer-events-none"
-                }`}
+                className={`p-3! rounded-full text-white transition duration-300 backdrop-blur-md ${showLeftButton
+                  ? "visible pointer-events-auto hover:bg-[#B3CB3C] hover:text-black"
+                  : "invisible pointer-events-none"
+                  }`}
                 aria-label="Previous works"
               >
                 <ChevronLeft size={24} />
@@ -245,11 +276,10 @@ export default function WorksSection() {
                     // setDirection(index > currentIndex ? 1 : -1);
                     setCurrentIndex(index);
                   }}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "bg-[#B3CB3C] w-8"
-                      : "bg-white/30 hover:bg-white/50 w-2"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
+                    ? "bg-[#B3CB3C] w-8"
+                    : "bg-white/30 hover:bg-white/50 w-2"
+                    }`}
                   whileHover={{ scale: 1.2 }}
                   aria-label={`Go to work ${index + 1}`}
                 />
@@ -259,8 +289,8 @@ export default function WorksSection() {
             <AnimatePresence>
               <motion.button
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ 
-                  opacity: 1, 
+                animate={{
+                  opacity: 1,
                   scale: 1,
                   boxShadow: [
                     "0 0 0px rgba(179, 203, 60, 0)",
@@ -269,13 +299,13 @@ export default function WorksSection() {
                   ]
                 }}
                 exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ 
+                transition={{
                   opacity: { duration: 0.2 },
                   scale: { duration: 0.2 },
-                  boxShadow: { 
-                    duration: 2, 
-                    repeat: Infinity, 
-                    ease: "easeInOut" 
+                  boxShadow: {
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
                   }
                 }}
                 whileHover={
@@ -287,11 +317,10 @@ export default function WorksSection() {
                 onClick={showRightButton ? handleNext : undefined}
                 tabIndex={showRightButton ? 0 : -1}
                 aria-disabled={!showRightButton}
-                className={`p-3! rounded-full text-white transition duration-300 backdrop-blur-md${
-                  showRightButton
-                    ? "visible pointer-events-auto hover:bg-[#B3CB3C] hover:text-black"
-                    : "invisible pointer-events-none"
-                } `}
+                className={`p-3! rounded-full text-white transition duration-300 backdrop-blur-md${showRightButton
+                  ? "visible pointer-events-auto hover:bg-[#B3CB3C] hover:text-black"
+                  : "invisible pointer-events-none"
+                  } `}
                 aria-label="Next works"
               >
                 <ChevronRight size={24} />

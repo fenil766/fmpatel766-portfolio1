@@ -4,6 +4,7 @@ import { motion, type Variants } from "framer-motion";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Handle scroll effect for navbar background
   useEffect(() => {
@@ -51,9 +52,9 @@ export default function Navbar() {
   ];
 
   const socialLinks = [
-    { icon: "fab fa-behance", href: "https://behance.net", delay: 0 },
-    { icon: "fab fa-dribbble", href: "https://dribbble.com", delay: 0.12 },
-    { icon: "fab fa-github", href: "https://github.com", delay: 0.24 },
+    { icon: "fab fa-github", href: "https://github.com/fenil766", delay: 0.24 },
+    { icon: "fab fa-behance", href: "https://www.behance.net/patelfenil11", delay: 0 },
+    { icon: "fab fa-dribbble", href: "https://dribbble.com/fenil766", delay: 0.12 },
   ];
 
   // Animation variants
@@ -108,6 +109,32 @@ export default function Navbar() {
     }),
   };
 
+  const mobileMenuVariants: Variants = {
+    closed: {
+      x: "100%",
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 30,
+      },
+    },
+    opened: {
+      x: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 30,
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const mobileLinkVariants: Variants = {
+    closed: { opacity: 0, x: 20 },
+    opened: { opacity: 1, x: 0 },
+  };
+
   return (
     <motion.nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-zinc-900/95 backdrop-blur-md shadow-lg" : "bg-transparent"
@@ -116,7 +143,7 @@ export default function Navbar() {
       initial="hidden"
       animate="visible"
     >
-      <div className="max-w-full mx-auto px-4! sm:px-6! lg:px-8!">
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
           {/* Logo */}
           <motion.div
@@ -124,11 +151,12 @@ export default function Navbar() {
             variants={logoVariants}
             initial="hidden"
             animate="visible"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             Portfolio
           </motion.div>
 
-          {/* Nav Links */}
+          {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link, i) => (
               <motion.a
@@ -150,27 +178,91 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Right portion: Social Icons (Desktop) + Hamburger (Mobile) */}
+          <div className="flex items-center gap-4 lg:gap-6">
+            {/* Social Icons - Desktop Only */}
+            <div className="hidden sm:flex items-center gap-4 lg:gap-5">
+              {socialLinks.map((social, i) => (
+                <motion.a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/90 hover:text-(--color-primary)! hover:scale-110 transition-all duration-200 ease-in-out"
+                  custom={social.delay}
+                  variants={socialVariants}
+                  initial="hidden"
+                  animate="visible"
+                >
+                  <i className={`${social.icon} text-xl lg:text-2xl`}></i>
+                </motion.a>
+              ))}
+            </div>
 
-          {/* Social Icons */}
-          <div className="flex flex-row-reverse items-center gap-4 lg:gap-5">
+            {/* Hamburger Button */}
+            <button
+              className="md:hidden text-white p-2 focus:outline-none z-50"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Toggle menu"
+            >
+              <div className="w-6 h-5 relative flex flex-col justify-between">
+                <motion.span
+                  animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                  className="w-full h-0.5 bg-white rounded-full block origin-center transition-all"
+                />
+                <motion.span
+                  animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="w-full h-0.5 bg-white rounded-full block transition-all"
+                />
+                <motion.span
+                  animate={isMenuOpen ? { rotate: -45, y: -10 } : { rotate: 0, y: 0 }}
+                  className="w-full h-0.5 bg-white rounded-full block origin-center transition-all"
+                />
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <motion.div
+        className="fixed inset-0 bg-zinc-950 z-40 md:hidden pt-24 px-8"
+        initial="closed"
+        animate={isMenuOpen ? "opened" : "closed"}
+        variants={mobileMenuVariants}
+      >
+        <div className="flex flex-col gap-8">
+          {navLinks.map((link) => (
+            <motion.a
+              key={link.name}
+              href={link.href}
+              className={`text-3xl font-bold tracking-tight ${activeSection === link.id ? "text-(--color-primary)" : "text-white"
+                }`}
+              variants={mobileLinkVariants}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {link.name}
+            </motion.a>
+          ))}
+
+          <motion.div
+            className="flex gap-6 mt-8 pt-8 border-t border-white/10"
+            variants={mobileLinkVariants}
+          >
             {socialLinks.map((social, i) => (
-              <motion.a
+              <a
                 key={i}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white/90 hover:text-(--color-primary)! hover:scale-110 transition-all duration-200 ease-in-out"
-                custom={social.delay}
-                variants={socialVariants}
-                initial="hidden"
-                animate="visible"
+                className="text-white/70 hover:text-(--color-primary) text-2xl"
               >
-                <i className={`${social.icon} text-xl lg:text-2xl`}></i>
-              </motion.a>
+                <i className={social.icon}></i>
+              </a>
             ))}
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Gradient Bottom Border */}
       <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-[#B3CB3C] to-transparent"></div>

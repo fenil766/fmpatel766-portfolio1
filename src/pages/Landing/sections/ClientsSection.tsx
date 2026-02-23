@@ -64,7 +64,7 @@ export default function ClientsSection() {
         {/* Infinite Carousel */}
         <motion.div
           className="relative"
-          initial={{ opacity: 0 }} 
+          initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.3, duration: 0.3 }}
         >

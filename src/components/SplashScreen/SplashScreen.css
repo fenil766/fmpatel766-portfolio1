@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+.splash-container {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    overflow: hidden;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+}
+
+.splash-title-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.splash-title {
+    position: relative;
+    color: #B3CB3C;
+    font-size: 8rem;
+    /* 128px */
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .splash-title {
+        font-size: 4rem;
+    }
+}
+
+.splash-glow-orange {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    right: -10%;
+    top: -20%;
+    background: #F25912;
+    border-radius: 50%;
+    filter: blur(400px);
+    opacity: 0.6;
+}
+
+.splash-glow-green {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    left: -10%;
+    bottom: -20%;
+    background: #B3CB3C;
+    border-radius: 50%;
+    filter: blur(400px);
+    opacity: 0.6;
+}
+
+.typewriter-cursor {
+    display: inline-block;
+    width: 4px;
+    height: 1em;
+    background-color: #B3CB3C;
+    margin-left: 4px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
