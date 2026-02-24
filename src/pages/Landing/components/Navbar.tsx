@@ -222,19 +222,6 @@ export default function Navbar() {
               ))}
             </div>
 
-            {/* Download CV Button - Desktop */}
-            <motion.a
-              href="https://drive.google.com/uc?export=download&id=1j1S8497SQZ9LE0FEd8f7OviZ2ixv2RCo"
-              className="hidden lg:flex items-center gap-2 bg-[#B3CB3C] text-black px-5 py-2 rounded-full font-bold text-sm tracking-wide hover:bg-black hover:text-[#B3CB3C] border border-[#B3CB3C] transition-all duration-300 shadow-[0_0_15px_rgba(179,203,60,0.3)] hover:shadow-[0_0_20px_rgba(179,203,60,0.5)]"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.2 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <i className="fas fa-download"></i>
-              CV
-            </motion.a>
 
             {/* Hamburger Button */}
             <button
@@ -282,15 +269,6 @@ export default function Navbar() {
             </motion.a>
           ))}
 
-          {/* Download CV - Mobile */}
-          <motion.a
-            href="https://drive.google.com/uc?export=download&id=1j1S8497SQZ9LE0FEd8f7OviZ2ixv2RCo"
-            className="flex items-center justify-center gap-2 bg-[#B3CB3C] text-black px-6 py-3 rounded-lg font-bold text-xl tracking-wide mt-4"
-            variants={mobileLinkVariants}
-          >
-            <i className="fas fa-download"></i>
-            Download CV
-          </motion.a>
 
           <motion.div
             className="flex gap-6 mt-8 pt-8 border-t border-white/10"
