@@ -25,7 +25,7 @@ export default function EducationSection() {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   // Google Drive CV link
-  const FILE_ID = "17skgmCacqQjJwpwqhjVNhEpStEprvQ80";
+  const FILE_ID = "1j1S8497SQZ9LE0FEd8f7OviZ2ixv2RCo";
   const DIRECT_DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
 
   const handleDownloadCV = () => {
