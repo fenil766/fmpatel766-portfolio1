@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "framer-motion";
+import Funnies from 'funnies';
 import "./SplashScreen.css";
 
 interface SplashScreenProps {
     onComplete: () => void;
 }
 
-const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
+const SplashScreen = ({ onComplete }: SplashScreenProps) => {
+    const funnies = useMemo(() => new Funnies(), []);
     const [text, setText] = useState("");
+    const [funnyMessage] = useState(funnies.message());
     const fullText = "Portfolio";
     const typingSpeed = 100; // ms per character
 
@@ -19,10 +22,10 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                 currentIdx++;
             } else {
                 clearInterval(interval);
-                // Delay before completing
+                // Delay before completing to let user read the funny message
                 setTimeout(() => {
                     onComplete();
-                }, 300);
+                }, 2000);
             }
         }, typingSpeed);
 
@@ -43,6 +46,14 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                     {text}
                     <span className="typewriter-cursor" />
                 </h1>
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1 }}
+                    className="splash-funny-message"
+                >
+                    {funnyMessage}
+                </motion.p>
             </div>
         </motion.div>
     );

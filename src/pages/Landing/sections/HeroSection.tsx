@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import characterImage from "../../../assets/images/3d-character.png";
 
 export default function HeroSection() {
@@ -25,13 +26,21 @@ export default function HeroSection() {
               <div className="absolute inset-0 bg-linear-to-br from-[#B3CB3C]/10 to-transparent rounded-full blur-2xl scale-110"></div>
 
               {/* Character image */}
-              <div className="relative z-10">
+              <motion.div
+                className="relative z-10 cursor-pointer"
+                whileTap={{
+                  y: -50,
+                  rotate: [0, -10, 10, -10, 0],
+                  transition: { duration: 0.5 }
+                }}
+                title="Hey! Don't tickle me!"
+              >
                 <img
                   src={characterImage}
-                  className="w-full max-w-xs lg:max-w-md"
+                  className="w-full max-w-xs lg:max-w-md pointer-events-none"
                   alt="3D character illustration"
                 />
-              </div>
+              </motion.div>
             </div>
           </div>
 
@@ -51,10 +60,40 @@ export default function HeroSection() {
 
 
             <div className="flex flex-col items-start! mb-3!">
-              {/* Main heading */}
-              <h1 className="text-7xl lg:text-8xl xl:text-9xl font-medium mb-4 text-white leading-none tracking-widest">
-                FENIL
-              </h1>
+              {/* Main heading with Glitch Effect */}
+              <motion.h1
+                className="relative text-7xl lg:text-8xl xl:text-9xl font-black mb-4 text-white leading-none tracking-widest cursor-default group"
+                whileHover="hover"
+              >
+                <span className="relative z-10">FENIL</span>
+
+                {/* Glitch Layers */}
+                <motion.span
+                  className="absolute inset-0 z-0 text-[#B3CB3C] opacity-0 group-hover:opacity-70 pointer-events-none"
+                  variants={{
+                    hover: {
+                      x: [-2, 2, -1, 3, 0],
+                      y: [1, -1, 2, 0],
+                      transition: { repeat: Infinity, duration: 0.1 }
+                    }
+                  }}
+                >
+                  FENIL
+                </motion.span>
+
+                <motion.span
+                  className="absolute inset-0 z-0 text-[#F25912] opacity-0 group-hover:opacity-70 pointer-events-none"
+                  variants={{
+                    hover: {
+                      x: [2, -2, 3, -1, 0],
+                      y: [-1, 1, -2, 0],
+                      transition: { repeat: Infinity, duration: 0.1, delay: 0.05 }
+                    }
+                  }}
+                >
+                  FENIL
+                </motion.span>
+              </motion.h1>
 
               {/* Subheading */}
               <p className="text-lg lg:text-xl text-gray-300 font-normal">

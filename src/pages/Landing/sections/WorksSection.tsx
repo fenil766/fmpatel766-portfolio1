@@ -39,7 +39,7 @@ export default function WorksSection() {
       id: 3,
       title: "Laundry App",
       description:
-        "Designed user interface for GatherGo's event management company website with intuitive navigation, elegant visuals, and seamless experience.",
+        "Designed the user interface for a Laundry Service mobile application, creating detailed user workflows, wireframes, and a structured sitemap to ensure smooth booking, order tracking, and seamless user experience.",
       image: laundry,
       link: "https://www.figma.com/board/9W20EnjrgUhcBEY3QMiF0R/Laundry-App?node-id=0-1&t=UbqtGGbRcqwJyEoO-1",
       isShowMore: false,
@@ -48,7 +48,7 @@ export default function WorksSection() {
       id: 4,
       title: "Hotel Management",
       description:
-        "Designed user interface for GatherGo's event management company website with intuitive navigation, elegant visuals, and seamless experience.",
+        "Designed a visually appealing and user-friendly landing page for a Hotel Booking platform, focusing on intuitive navigation, clear call-to-action sections, and seamless room discovery experience.",
       image: hotel,
       link: "https://www.figma.com/proto/9SJR5cQJskLVf5U1C0BhGA/Portfolio-Showcase?node-id=34-842&p=f&viewport=423%2C40%2C0.15&t=BTWoKKx0JLXwbD9B-1&scaling=min-zoom&content-scaling=fixed&page-id=34%3A841",
       isShowMore: false,

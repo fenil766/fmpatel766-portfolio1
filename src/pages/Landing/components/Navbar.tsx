@@ -5,6 +5,16 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mood, setMood] = useState('Coding Magic ✨');
+
+  const moods = ['Coding Magic ✨', 'Needs Coffee ☕', 'Debugging Life 🐛', 'Designing Dreams 🎨', 'Pizza Mode 🍕'];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMood(moods[Math.floor(Math.random() * moods.length)]);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Handle scroll effect for navbar background
   useEffect(() => {
@@ -145,16 +155,29 @@ export default function Navbar() {
     >
       <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 lg:h-20">
-          {/* Logo */}
-          <motion.div
-            className="text-2xl sm:text-3xl font-bold text-(--color-primary) font-(family-name:--font-primary) cursor-pointer hover:scale-103 transition-transform duration-200 ease-in-out"
-            variants={logoVariants}
-            initial="hidden"
-            animate="visible"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          >
-            Portfolio
-          </motion.div>
+          <div className="flex items-center gap-4">
+            <motion.div
+              className="text-2xl sm:text-3xl font-bold text-(--color-primary) font-(family-name:--font-primary) cursor-pointer hover:scale-103 transition-transform duration-200 ease-in-out"
+              variants={logoVariants}
+              initial="hidden"
+              animate="visible"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              Portfolio
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="hidden lg:flex items-center bg-white/5 px-3 py-1 rounded-full border border-white/10"
+            >
+              <span className="text-[10px] uppercase tracking-widest text-gray-500 mr-2">Mood:</span>
+              <span className="text-xs text-[#B3CB3C] font-medium animate-pulse">
+                {mood}
+              </span>
+            </motion.div>
+          </div>
 
           {/* Desktop Nav Links */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">

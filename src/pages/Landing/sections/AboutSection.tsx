@@ -7,11 +7,11 @@ export default function AboutSection() {
   const isInView = useInView(ref, { amount: 0.3 });
 
   const softSkills = [
-    "Understanding client goals and requirements",
-    "Attention to detail and design consistency",
-    "Communicating progress clearly",
-    "Managing tasks and timelines efficiently",
-    "Strong problem-solving mindset",
+    { name: "Understanding client goals", tip: "I'm basically a mind reader, but for design. 🧠" },
+    { name: "Attention to detail", tip: "I see pixels you didn't even know existed. 👁️" },
+    { name: "Communicating progress", tip: "I'll update you so often you'll think I'm a bot. 🤖" },
+    { name: "Managing timelines", tip: "Time is a flat circle, but my deadlines are solid. ⏳" },
+    { name: "Problem-solving mindset", tip: "I eat 'impossible' problems for breakfast. 🥣" },
   ];
 
   // Container animation (for stagger effect)
@@ -127,18 +127,31 @@ export default function AboutSection() {
                   <motion.div
                     key={index}
                     variants={skillVariants}
-                    className="flex items-start gap-3! group"
+                    className="flex items-start gap-3! group relative"
                   >
                     <div className="shrink-0 mt-1!">
-                      <img
+                      <motion.img
                         src={RightIcon}
                         alt="Check"
-                        className="w-6 h-6 group-hover:scale-110 transition-transform duration-300"
+                        className="w-6 h-6"
+                        whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.2 }}
                       />
                     </div>
-                    <p className="text-base lg:text-lg text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
-                      {skill}
-                    </p>
+                    <div className="flex flex-col">
+                      <p className="text-base lg:text-lg text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
+                        {skill.name}
+                      </p>
+
+                      {/* Cartoonish Tooltip */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.8 }}
+                        whileHover={{ opacity: 1, y: -5, scale: 1 }}
+                        className="absolute -top-10 left-0 bg-[#F25912] text-white text-xs py-1 px-3 rounded-lg opacity-0 pointer-events-none z-20 whitespace-nowrap shadow-xl"
+                      >
+                        {skill.tip}
+                        <div className="absolute -bottom-1 left-4 w-2 h-2 bg-[#F25912] rotate-45" />
+                      </motion.div>
+                    </div>
                   </motion.div>
                 ))}
               </motion.div>

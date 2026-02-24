@@ -1,6 +1,8 @@
 import { motion, type Variants, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Mail, Phone } from "lucide-react";
+import { DodgeButton } from "../../../components/common/DodgeButton";
+import { BugSplat } from "../../../components/common/BugSplat";
 
 export default function CTASection() {
   const ref = useRef(null);
@@ -66,11 +68,11 @@ export default function CTASection() {
         </motion.div>
 
         {/* Contact Info Display */}
-        <motion.div 
+        <motion.div
           className="flex flex-col sm:flex-row justify-center items-center gap-4! mb-8! text-gray-400"
           variants={itemVariants}
         >
-          <a 
+          <a
             href={`mailto:${email}`}
             className="flex items-center gap-2! hover:text-[#B3CB3C] transition-colors"
           >
@@ -78,7 +80,7 @@ export default function CTASection() {
             <span>{email}</span>
           </a>
           <span className="hidden sm:block text-gray-600">|</span>
-          <a 
+          <a
             href={`tel:+91${phoneNumber}`}
             className="flex items-center gap-2! hover:text-[#B3CB3C] transition-colors"
           >
@@ -115,15 +117,24 @@ export default function CTASection() {
           >
             <span className="flex items-center justify-center">
               <span>MAIL ME</span>
-              
+
               {/* Mail Icon - appears on hover with spacing */}
-              <Mail 
-                className="w-0 h-5 opacity-0 ml-0! transition-all duration-500 group-hover:w-5 group-hover:opacity-100 group-hover:ml-3! group-hover:filter-[drop-shadow(0_0_8px_#B3CB3C)]" 
+              <Mail
+                className="w-0 h-5 opacity-0 ml-0! transition-all duration-500 group-hover:w-5 group-hover:opacity-100 group-hover:ml-3! group-hover:filter-[drop-shadow(0_0_8px_#B3CB3C)]"
                 strokeWidth={2.5}
               />
             </span>
           </motion.a>
+
+          {/* Bug Splat Game */}
+          <BugSplat />
         </motion.div>
+
+        {/* Funny Challenge */}
+        <div className="mt-20! text-center">
+          <p className="text-gray-500 text-sm mb-4">Feeling lucky? Try to click this button below!</p>
+          <DodgeButton />
+        </div>
       </div>
     </motion.section>
   );

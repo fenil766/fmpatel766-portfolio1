@@ -8,13 +8,13 @@ export default function Footer() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   const socialLinks = [
-    { name: "DRIBBLE", href: "https://dribbble.com/" },
-    { name: "FIGMA", href: "https://www.figma.com/" },
-    { name: "GITHUB", href: "https://github.com/fenil766" },
-    { name: "INSTAGRAM", href: "https://www.instagram.com/fenil766" },
-    { name: "LINKEDIN", href: "https://www.linkedin.com/in/fenil-patel-1a50a6264/" },
-    { name: "BEHANCE", href: "https://www.behance.net/" },
-    { name: "FACEBOOK", href: "https://www.facebook.com/" },
+    { name: "DRIBBLE", icon: "fab fa-dribbble", href: "https://dribbble.com/fenil766" },
+    { name: "FIGMA", icon: "fab fa-figma", href: "https://www.figma.com/" },
+    { name: "GITHUB", icon: "fab fa-github", href: "https://github.com/fenil766" },
+    { name: "INSTAGRAM", icon: "fab fa-instagram", href: "https://www.instagram.com/fenil766" },
+    { name: "LINKEDIN", icon: "fab fa-linkedin-in", href: "https://www.linkedin.com/in/fenil-patel-1a50a6264/" },
+    { name: "BEHANCE", icon: "fab fa-behance", href: "https://www.behance.net/patelfenil11" },
+    { name: "FACEBOOK", icon: "fab fa-facebook-f", href: "https://www.facebook.com/" },
   ];
 
   const socialLinksTop = socialLinks.slice(0, 3);
@@ -75,13 +75,14 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link text-lg sm:text-sm lg:text-xl font-bold relative group"
+                className="social-link text-lg sm:text-xs lg:text-xl font-bold relative group flex items-center gap-2"
                 custom={index}
                 variants={socialVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                {link.name}
+                <i className={link.icon}></i>
+                <span>{link.name}</span>
               </motion.a>
             ))}
           </div>
@@ -93,13 +94,14 @@ export default function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link text-lg sm:text-sm lg:text-xl font-bold relative group"
+                className="social-link text-lg sm:text-xs lg:text-xl font-bold relative group flex items-center gap-2"
                 custom={3 + index}
                 variants={socialVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                {link.name}
+                <i className={link.icon}></i>
+                <span>{link.name}</span>
               </motion.a>
             ))}
           </div>
