@@ -1,6 +1,6 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
 @import "./variables.css";
+@import "tailwindcss";
 
 /* Base Styles */
 * {

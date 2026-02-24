@@ -9,7 +9,7 @@
     justify-content: center;
     z-index: 9999;
     overflow: hidden;
-    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-family: var(--font-primary);
 }
 
 .splash-title-wrapper {
@@ -34,6 +34,7 @@
     color: #B3CB3C;
     font-size: 8rem;
     /* 128px */
+    font-family: var(--font-primary);
     font-weight: 400;
     letter-spacing: -0.02em;
     z-index: 10;
