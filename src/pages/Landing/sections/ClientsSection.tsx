@@ -6,6 +6,7 @@ import LZnewLogoWhite from "../../../assets/images/LZnewLogoWhite.png";
 import sparkLogo from "../../../assets/images/SparkWhite.png";
 import meetPetroleumLogo from "../../../assets/images/MEET_PETROLEUM.png";
 import koWHITE from "../../../assets/images/koWHITE.png";
+import CreatixVERTICAwhite from "../../../assets/images/CreatixVERTICAwhite.png";
 
 export default function ClientsSection() {
   const ref = useRef(null);
@@ -17,6 +18,7 @@ export default function ClientsSection() {
     { name: "Spark", logo: sparkLogo },
     { name: "Meet Petroleum", logo: meetPetroleumLogo },
     { name: "Sifi", logo: koWHITE },
+    { name: "Creatix", logo: CreatixVERTICAwhite }
   ];
 
   // Duplicate clients for infinite carousel
