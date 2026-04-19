@@ -24,18 +24,12 @@ export default function EducationSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
-  // Google Drive CV link
-  const FILE_ID = "1LZtNlK3wCUas1HxwFQFFejFrqiQhQLCZ";
-  const DIRECT_DOWNLOAD_URL = `https://drive.google.com/uc?export=download&id=${FILE_ID}`;
+  // Google Drive direct download CV link
+  const CV_DOWNLOAD_URL = "https://drive.google.com/uc?export=download&id=1zUQ7b_D5-V-ZFLFpIBh-6MyMsFO99RP1";
 
   const handleDownloadCV = () => {
-    // Create an invisible anchor element and trigger download
-    const link = document.createElement("a");
-    link.href = DIRECT_DOWNLOAD_URL;
-    link.download = "Fenil_Patel_CV.pdf"; // Suggested file name
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    // Open the download link which will trigger the file download
+    window.location.href = CV_DOWNLOAD_URL;
   };
 
   const containerVariants: Variants = {

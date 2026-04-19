@@ -80,12 +80,12 @@ export default function AchievementsSection() {
   return (
     <motion.section
       ref={ref}
-      className="py-12! lg:py-16! px-4! sm:px-6! lg:px-8! relative"
+      className="py-12! lg:py-16! px-4! sm:px-6! lg:px-8! relative overflow-visible"
       variants={containerVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
-      <div className="w-full mx-auto! max-w-5xl">
+      <div className="w-full mx-auto! max-w-5xl px-0! sm:px-0!">
         {/* Header */}
         <motion.div
           className="text-center mb-8! lg:mb-10!"
@@ -97,7 +97,7 @@ export default function AchievementsSection() {
         </motion.div>
 
         {/* Achievement Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4! lg:gap-5! mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4! lg:gap-5! mx-auto w-full">
           {achievementsData.map((achievement, index) => (
             <AchievementCard
               key={index}
@@ -131,7 +131,7 @@ function AchievementCard({
   return (
     <motion.div
       variants={variants}
-      className="relative group"
+      className="relative group w-full"
       whileHover={{
         scale: 1.02,
         transition: { duration: 0.3 },
@@ -151,7 +151,7 @@ function AchievementCard({
       />
 
       {/* Main card */}
-      <div className="relative bg-[#1a1a1a] rounded-xl border border-[#333333] overflow-hidden group-hover:border-[#B3CB3C]/50 transition-colors duration-500">
+      <div className="relative w-full bg-[#1a1a1a] rounded-xl border border-[#333333] overflow-hidden group-hover:border-[#B3CB3C]/50 transition-colors duration-500">
         {/* Animated border gradient */}
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -170,17 +170,17 @@ function AchievementCard({
           }}
         />
 
-        <div className="relative z-10 p-3! lg:p-4!">
+        <div className="relative z-10 p-3! lg:p-4! w-full">
           {/* Certificate Image */}
           <motion.div
-            className="mb-3! lg:mb-3! rounded-lg overflow-hidden bg-[#2a2a2a] border border-[#444444] group-hover:border-[#B3CB3C]/50 transition-all duration-500"
+            className="mb-3! lg:mb-3! rounded-lg overflow-hidden bg-[#2a2a2a] border border-[#444444] group-hover:border-[#B3CB3C]/50 transition-all duration-500 w-full"
             transition={{ duration: 0.3 }}
           >
-            <div className="relative aspect-4/3 w-full">
+            <div className="relative w-full h-auto">
               <img
                 src={achievement.image}
                 alt={achievement.title}
-                className="w-full h-full object-cover"
+                className="w-full h-auto object-contain"
               />
             </div>
           </motion.div>

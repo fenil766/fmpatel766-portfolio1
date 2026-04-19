@@ -152,8 +152,15 @@ export default function Navbar() {
       variants={navbarVariants}
       initial="hidden"
       animate="visible"
+      onAnimationComplete={() => {
+        if (isMenuOpen) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = 'unset';
+        }
+      }}
     >
-      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-full mx-auto px-[10%]">
         <div className="flex justify-between items-center h-16 lg:h-20">
           <div className="flex items-center gap-4">
             <motion.div
@@ -250,10 +257,11 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <motion.div
-        className="fixed inset-0 bg-zinc-950 z-40 md:hidden pt-24 px-8"
+        className="fixed inset-0 bg-[#111111] backdrop-blur-2xl z-40 md:hidden pt-28 px-[10%] overflow-y-auto"
         initial="closed"
         animate={isMenuOpen ? "opened" : "closed"}
         variants={mobileMenuVariants}
+        style={{ pointerEvents: isMenuOpen ? 'auto' : 'none' }}
       >
         <div className="flex flex-col gap-8">
           {navLinks.map((link) => (
