@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import workCardTemplate from "../../../assets/images/work-card-temp.jpg";
+import washmate from "../../../assets/images/washmate.png";
 import spark from "../../../assets/images/sparkThumbnil.jpeg";
 import freshNest from "../../../assets/images/fresNestThumbnil.jpeg";
 import laundry from "../../../assets/images/laundryThumbnil.jpeg";
@@ -17,8 +18,17 @@ export default function WorksSection() {
 
   // 5 dummy works + 1 "Show More" card
   const works = [
-    {
+        {
       id: 1,
+      title: "Washmate Case Study",
+      description:
+        "Designed a seamless laundry service app for Washmate, combining intuitive navigation, real-time order tracking, convenient doorstep pickup and delivery, and a clean, user-friendly digital experience.",
+      image: washmate,
+      link: "https://drive.google.com/file/d/1aR8vSGZTKNJo4xnBkbVPHuaYW9byEN1Q/view?usp=drive_link",
+      isShowMore: false,
+    },
+    {
+      id: 2,
       title: "Spark Event Management",
       description:
         "Designed a sophisticated event management website for Spark, combining intuitive navigation, refined visuals, and a seamless digital experience.",
@@ -27,7 +37,7 @@ export default function WorksSection() {
       isShowMore: false,
     },
     {
-      id: 2,
+      id: 3,
       title: "Fresh Nest",
       description:
         "Designed a clean and user-friendly website for Fresh Nest cleaning services, ensuring intuitive navigation and a seamless browsing experience",
@@ -36,7 +46,7 @@ export default function WorksSection() {
       isShowMore: false,
     },
     {
-      id: 3,
+      id: 4,
       title: "Laundry App",
       description:
         "Designed the user interface for a Laundry Service mobile application, creating detailed user workflows, wireframes, and a structured sitemap to ensure smooth booking, order tracking, and seamless user experience.",
@@ -45,7 +55,7 @@ export default function WorksSection() {
       isShowMore: false,
     },
     {
-      id: 4,
+      id: 5,
       title: "Hotel Management",
       description:
         "Designed a visually appealing and user-friendly landing page for a Hotel Booking platform, focusing on intuitive navigation, clear call-to-action sections, and seamless room discovery experience.",
