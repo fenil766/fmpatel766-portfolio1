@@ -27,24 +27,30 @@ export default function ExperienceSection() {
   const experiences = [
     {
       number: "01",
+      company: "Capermint technologies",
+      position: "Jr. Creative Designer",
+      duration: "March 2026 - Present",
+    },
+    {
+      number: "02",
       company: "Vaidrix Technologies ",
       position: "UI/UX Designer",
       duration: "October 2025 - Feb 2026",
     },
     {
-      number: "02",
+      number: "03",
       company: "Freelancer",
       position: "UI/UX Designer",
       duration: "Dec 2024 - Present",
     },
     {
-      number: "03",
+      number: "04",
       company: "Freelancer",
       position: "Frontend Developer",
       duration: "Dec 2024 - Present",
     },
     {
-      number: "04",
+      number: "05",
       company: "Adopt Net Tech Pvt. Ltd.",
       position: "Frontend Developer & QA Engineer",
       duration: "Feb 2025 - May 2025",

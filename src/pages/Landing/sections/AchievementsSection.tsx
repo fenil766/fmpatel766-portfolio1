@@ -4,8 +4,16 @@ import { Award, ExternalLink } from "lucide-react";
 import ML from "../../../assets/images/certificates/ML.png";
 import Web from "../../../assets/images/certificates/Web.png";
 import PWskills from "../../../assets/images/certificates/PWskills.png";
+import TuteDude from "../../../assets/images/certificates/tutedude.jpg";
 
 const achievementsData = [
+  {
+    title: "UI/UX Designing",
+    subtext: "Mastered the principles of user interface and user experience design, creating intuitive and engaging digital experiences.",
+    institution: "Tutedude",
+    image: TuteDude,
+    link: "https://drive.google.com/file/d/137J-UzK2kKMNgETAEFYTcTZ1cJn5JVn0/view?usp=sharing",
+  },
   {
     title:
       "Professional Certificate in Full Stack Web Development with AI – PW Skills",
@@ -118,6 +126,7 @@ interface AchievementCardProps {
     institution: string;
     image: string;
     link: string;
+    subtext?: string;
   };
   variants: Variants;
   index: number;
@@ -212,6 +221,13 @@ function AchievementCard({
           >
             {achievement.title}
           </motion.h3>
+
+          {/* Subtext */}
+          {achievement.subtext && (
+            <motion.p className="text-xs lg:text-sm text-gray-400 mb-3! leading-relaxed">
+              {achievement.subtext}
+            </motion.p>
+          )}
 
           {/* Learn More Link */}
           <motion.a
