@@ -4,7 +4,7 @@ import { Award, ExternalLink } from "lucide-react";
 import ML from "../../../assets/images/certificates/ML.png";
 import Web from "../../../assets/images/certificates/Web.png";
 import PWskills from "../../../assets/images/certificates/PWskills.png";
-import TuteDude from "../../../assets/images/certificates/tutedude.jpg";
+import TuteDude from "../../../assets/images/certificates/Tutedude.jpg";
 
 const achievementsData = [
   {
