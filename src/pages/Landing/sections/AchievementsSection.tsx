@@ -140,7 +140,7 @@ function AchievementCard({
   return (
     <motion.div
       variants={variants}
-      className="relative group w-full"
+      className="relative group w-full h-full"
       whileHover={{
         scale: 1.02,
         transition: { duration: 0.3 },
@@ -160,7 +160,7 @@ function AchievementCard({
       />
 
       {/* Main card */}
-      <div className="relative w-full bg-[#1a1a1a] rounded-xl border border-[#333333] overflow-hidden group-hover:border-[#B3CB3C]/50 transition-colors duration-500">
+      <div className="relative w-full h-full bg-[#1a1a1a] rounded-xl border border-[#333333] overflow-hidden group-hover:border-[#B3CB3C]/50 transition-colors duration-500 flex flex-col">
         {/* Animated border gradient */}
         <motion.div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -179,17 +179,17 @@ function AchievementCard({
           }}
         />
 
-        <div className="relative z-10 p-3! lg:p-4! w-full">
+        <div className="relative z-10 p-3! lg:p-4! w-full flex flex-col flex-grow">
           {/* Certificate Image */}
           <motion.div
             className="mb-3! lg:mb-3! rounded-lg overflow-hidden bg-[#2a2a2a] border border-[#444444] group-hover:border-[#B3CB3C]/50 transition-all duration-500 w-full"
             transition={{ duration: 0.3 }}
           >
-            <div className="relative w-full h-auto">
+            <div className="relative w-full aspect-[4/3] flex items-center justify-center p-2">
               <img
                 src={achievement.image}
                 alt={achievement.title}
-                className="w-full h-auto object-contain"
+                className="max-w-full max-h-full object-contain"
               />
             </div>
           </motion.div>
@@ -228,6 +228,8 @@ function AchievementCard({
               {achievement.subtext}
             </motion.p>
           )}
+
+          <div className="flex-grow" />
 
           {/* Learn More Link */}
           <motion.a
